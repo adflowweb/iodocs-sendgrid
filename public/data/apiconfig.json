@@ -1,6 +1,6 @@
 {
    "sendgrid":{
-      "name":"SendGrid",
+      "name":"SendGrid Reseller",
       "logo":"/images/sendgrid.png",
       "protocol":"https",
       "baseURL":"sendgrid.com",
