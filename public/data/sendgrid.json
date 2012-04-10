@@ -1,1913 +1,3050 @@
 {
-    "endpoints": [
+  "endpoints": [
     {
-        "name": "Blocks",
-        "methods": [
+      "name": "Customer",
+      "methods": [
         {
-            "MethodName": "Get",
-            "Synopsis": "Retrieve a list of Blocks with addresses and response codes",
-            "HTTPMethod": "GET",
-            "URI": "/blocks.get.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Add",
+          "Synopsis": "Create a reseller customer",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.add.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "date",
-                "Required": "N",
-                "Default": "1",
-                "Type": "int",
-                "Description": "Retrieve timestamp of the Block records in YYYY-MM-DD HH:MM:SS format"
+              "ParameterName": "username",
+              "Description": "The new username for the customer you are creating. No more than 64 characters.",
+              "Required": "Y",
+              "Type": "string"
             },
             {
-                "Name": "days",
-                "Required": "N",
-                "Default": "",
-                "Type": "int",
-                "Description": "Number of days in the past for which to retrieve blocks (includes today). Must be an integer greater than 0"
+              "ParameterName": "password",
+              "Description": "The password for the new customer being created. Must be at least 6 characters.",
+              "Required": "Y",
+              "Type": "string"
             },
             {
-                "Name": "start_date",
-                "Required": "N",
-                "Default": "",
-                "Type": "int",
-                "Description": "The start date of the range to look up statistics. Date must be in YYYY-MM-DD format and be before the end_date parameter"
+              "ParameterName": "confirm_password",
+              "Description": "Must match password and must be at least 6 characters.",
+              "Required": "Y",
+              "Type": "string"
             },
             {
-                "Name": "end_date",
-                "Required": "N",
-                "Default": "",
-                "Type": "int",
-                "Description": "The end date of the range to look up statistics. Date must be in YYYY-MM-DD format and be after the start_date parameter"
+              "ParameterName": "email",
+              "Description": "Must be a valid email string. No more than 64 characters.",
+              "Required": "Y",
+              "Type": "string"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "first_name",
+              "Description": "First name of the customer being created. No more than 50 characters.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "last_name",
+              "Description": "Last name of the customer being created. No more than 50 characters.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "address",
+              "Description": "New customer's address. No more than 100 characters.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "city",
+              "Description": "New customer's city. No more than 100 characters.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "state",
+              "Description": "New customer's state. No more than 100 characters.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "zip",
+              "Description": "New customer's postal code. This field is not\nvalidated. Please validate postal code after client input.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "country",
+              "Description": "New customer's country. No more than 100 characters.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "phone",
+              "Description": "The new customer phone number. No more than 50 characters.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "website",
+              "Description": "The new customer website. No more than 255 characters.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "company",
+              "Description": "The new customer company name. No more than 255 characters.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "package",
+              "Description": "The name of the service package that will be assigned to the new customer. No more than 255 characters.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "whitelabel",
+              "Description": "The domain name that will be used for The new customer whitelabeling. No more than 255 characters.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "ip_group[]",
+              "Description": "Optional array of ip_group names to which the new customer will be assigned. No more than 255 characters.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "ip[]",
+              "Description": "Optional array of IP addresses to which the new customer will be assigned, the package allows it. No more than 255 characters. IP addresses must belong to you.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "free_user",
+              "Description": "If true, the new customer will be a free customer.",
+              "Required": "N",
+              "Type": "boolean"
+            },
+            {
+              "ParameterName": "billing_date",
+              "Description": "Optionally specify the new customer’s billing date. If unspecified, the creation date will be used. Must be in YYYY-mm-dd format. This date must be within one month from the time of creation, e.g. if the customer is created on 2011-02-28, then the latest date you can use is 2011-03-28.",
+              "Required": "N",
+              "Type": "YYYY-mm-dd"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         },
         {
-            "MethodName": "Delete",
-            "Synopsis": "Delete an address from the Block list",
-            "HTTPMethod": "GET",
-            "URI": "/blocks.delete.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Delete",
+          "Synopsis": "Remove a customer from your account. This is not the same as disabling a customer on our system. However, the removed user will still be stored within the system so that you cannot re-register a new user with this new username.\n\nThis is the same thing as closing out a customer's account at the end of their billing cycle.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.delete.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "email",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "Email block address to remove"
+              "ParameterName": "user",
+              "Description": "The username of the customer you wish to delete.",
+              "Required": "Y",
+              "Type": "string"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
+        },
+        {
+          "MethodName": "Retrieve Customers",
+          "Synopsis": "Obtain a list of all customers, optionally filtered by properties.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to get in order\nto retrieve user information",
+              "Required": "Y",
+              "Default": "get",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "username",
+              "Description": "Search filter for customer username",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "email",
+              "Description": "Search filter for customer email",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "active",
+              "Description": "Search filter for whether or not the customer is currently active.",
+              "Required": "N",
+              "Type": "boolean"
+            },
+            {
+              "ParameterName": "first_name",
+              "Description": "Search filter for customer's first name.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "last_name",
+              "Description": "Search filter for customer's last name.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "address",
+              "Description": "Search filter for customer's address.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "city",
+              "Description": "Search filter for customer's city.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "state",
+              "Description": "Search filter for customer's state.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "country",
+              "Description": "Search filter for customer's country.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "zip",
+              "Description": "Search filter for customer's postal code.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "phone",
+              "Description": "Search filter for customer's phone number.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "website",
+              "Description": "Search filter for customer's website.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "company",
+              "Description": "Search filter for customer's company.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to profile.",
+              "Required": "Y",
+              "Default": "profile",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Enable a Customer",
+          "Synopsis": "Enable a customer so they may start sending out emails again. This call will not enable website access.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "user",
+              "Description": "The user account to enable. Must be in email format.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to enable",
+              "Default": "enable",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Disable a Customer",
+          "Synopsis": "Prevent an account from sending emails with SendGrid.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "user",
+              "Description": "The user account to enable. Must be in email format.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to disable",
+              "Default": "disable",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Enable Website Access",
+          "Synopsis": "Grant user access to login to SendGrid.com",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "user",
+              "Description": "The user account to enable. Must be in email format.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to website_enable",
+              "Default": "website_enable",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Disable Website Access",
+          "Synopsis": "Revoke user access to login to SendGrid.com",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "user",
+              "Description": "The user account to disable. Must be in email format.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to website_disable",
+              "Default": "website_disable",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Update",
+          "Synopsis": "Update a reseller customer",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to set",
+              "Default": "set",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to profile",
+              "Default": "profile",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The username of the customer to update.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "first_name",
+              "Description": "The updated customer first name. No more than 50 characters.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "last_name",
+              "Description": "The updated customer last name. No more than 50 characters.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "address",
+              "Description": "The updated customer address. No more than 100 characters.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "city",
+              "Description": "The updated customer city. No more than 100 characters.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "state",
+              "Description": "The updated customer state. No more than 100 characters.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "zip",
+              "Description": "The updated customer postal code. This field is not\nvalidated. Please validate postal code after client input.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "country",
+              "Description": "The updated customer country. No more than 100 characters.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "phone",
+              "Description": "The updated customer phone number. No more than 50 characters.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "website",
+              "Description": "The updated customer website. No more than 255 characters.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "company",
+              "Description": "The updated customer company name. No more than 255 characters.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Update Customer Password",
+          "Synopsis": "Reset a customer's password. Passwords are encrypted and therefore cannot be retrieved.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "user",
+              "Description": "The username of the customer whose password you want to update.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to password",
+              "Required": "Y",
+              "Default": "password",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "password",
+              "Description": "New customer password. Must be at least 6 characters.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "confirm_password",
+              "Description": "Must match password parameter and be at least 6 characters.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Update Customer Username",
+          "Synopsis": "Change customer's username. The account username is used to login to our SMTP server and the website, and changes take effect immediately.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to setUsername.",
+              "Default": "setUsername",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "name",
+              "Description": "The username of the account for which to update the username.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "username",
+              "Description": "The new username. Must be in email format, not more than 100 characters, cannot be already taken and cannot contain SendGrid.com in the domain name.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to profile.",
+              "Required": "Y",
+              "Default": "profile",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Update Customer Email Address",
+          "Synopsis": "Change customer's username. The account username is used to login to our SMTP server and the website, and changes take effect immediately.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to setEmail.",
+              "Required": "Y",
+              "Default": "setEmail",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The username of the account for which to update the email address.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "username",
+              "Description": "The new username. Must be in email format, not more than 100 characters, cannot be already taken and cannot contain SendGrid.com in the domain name.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to email.",
+              "Required": "Y",
+              "Default": "email",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
         }
-        ]
+      ]
     },
     {
-        "name": "Bounces",
-        "methods": [
+      "name": "Statistics",
+      "methods": [
         {
-            "MethodName": "Get",
-            "Synopsis": "Retrieve a list of bounces with addresses and response codes, optionally with dates",
-            "HTTPMethod": "GET",
-            "URI": "/bounces.get.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Retrieve Statistics",
+          "Synopsis": "Retrieve statistics for a specified customer. Note that you can use either the days parameter or the start_date and end_date parameter.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "date",
-                "Required": "N",
-                "Default": "1",
-                "Type": "int",
-                "Description": "Retrieve timestamp of the bounce records in YYYY-MM-DD HH:MM:SS format"
+              "ParameterName": "user",
+              "Description": "The customer for which to retrieve statistics.",
+              "Required": "Y",
+              "Type": "string"
             },
             {
-                "Name": "days",
-                "Required": "N",
-                "Default": "",
-                "Type": "int",
-                "Description": "Number of days in the past for which to retrieve bounces (includes today). Must be an integer greater than 0"
+              "ParameterName": "method",
+              "Description": "Must be set to stats.",
+              "Required": "Y",
+              "Default": "stats",
+              "Type": "string"
             },
             {
-                "Name": "start_date",
-                "Required": "N",
-                "Default": "",
-                "Type": "int",
-                "Description": "The start date of the range for which to retrieve bounces. Date must be in YYYY-MM-DD format and be before the end_date parameter"
+              "ParameterName": "days",
+              "Description": "Number of days in the past for which to retrieve statistics (includes today).",
+              "Required": "Y",
+              "Type": "integer"
             },
             {
-                "Name": "end_date",
-                "Required": "N",
-                "Default": "",
-                "Type": "int",
-                "Description": "The end date of the range to retrieve bounces. Date must be in YYYY-MM-DD format and be after the start_date parameter"
+              "ParameterName": "start_date",
+              "Description": "The start of the date range for which to retrieve statistics. Date must be in YYYY-mm-dd format and be earlier than the end_date parameter",
+              "Required": "N",
+              "Type": "YYYY-mm-dd"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "end_date",
+              "Description": "The end of the date range for which to retrieve statistics. Date must be in YYYY-mm-dd format and be later than the start_date parameter",
+              "Required": "Y",
+              "Type": "YYYY-mm-dd"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         },
         {
-            "MethodName": "Delete",
-            "Synopsis": "Delete an address from the bounce list",
-            "HTTPMethod": "GET",
-            "URI": "/bounces.delete.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Retrieve Aggregate Statistics",
+          "Synopsis": "Retrieve all-time statistics for a customer.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "email",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "Email bounce address to remove"
+              "ParameterName": "user",
+              "Description": "The customer for which to retrieve statistics.",
+              "Required": "Y",
+              "Type": "string"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "method",
+              "Description": "Must be set to stats.",
+              "Required": "Y",
+              "Default": "stats",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "aggregate",
+              "Description": "Must be set to 1 to retrieve aggregate statistics.",
+              "Required": "Y",
+              "Default": "1",
+              "Type": "bit"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
+        },
+        {
+          "MethodName": "Category List",
+          "Synopsis": "Retrieve a list of customer's categories.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "user",
+              "Description": "The customer for which to retrieve statistics.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to stats.",
+              "Required": "Y",
+              "Default": "stats",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "list",
+              "Description": "Must be set to true.",
+              "Required": "Y",
+              "Default": "true",
+              "Type": "boolean"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Category Statistics",
+          "Synopsis": "Retrieve a customer's statistics broken down by category. If the category does not exist, there will be an empty result set.\n\nNote that you can use either the days parameter or the start_date and end_date parameter.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "user",
+              "Description": "The user for which to retrieve category statistics.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to stats.",
+              "Required": "Y",
+              "Default": "stats",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "category",
+              "Description": "The category for which to retrieve statistics. Can also be an array containing multiple categories.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "days",
+              "Description": "The number of days in the past for which to retrieve category statistics, including today.",
+              "Required": "N",
+              "Type": "integer"
+            },
+            {
+              "ParameterName": "start_date",
+              "Description": "The start of the date range for which to retrieve category statistics. Date must be in YYYY-mm-dd format and be earlier than the end_date parameter",
+              "Required": "N",
+              "Type": "YYYY-mm-dd"
+            },
+            {
+              "ParameterName": "end_date",
+              "Description": "The end of the date range for which to retrieve category statistics. Date must be in YYYY-mm-dd format and be later than the start_date parameter.",
+              "Required": "N",
+              "Type": "YYYY-mm-dd"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
         }
-        ]
+      ]
     },
     {
-        "name": "Event Notification URL",
-        "methods": [
+      "name": "Bounces",
+      "methods": [
         {
-            "MethodName": "Get",
-            "Synopsis": "Retrieves the URL that Event Notifications will be POSTed to",
-            "HTTPMethod": "GET",
-            "URI": "/eventposturl.get.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Retrieve Bounces",
+          "Synopsis": "Retrieve a customer's list of bounced email addresses.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
-            }
-            ]
-        },
-        {
-            "MethodName": "Set",
-            "Synopsis": "Sets the URL that Event Notifications will be POSTed to",
-            "HTTPMethod": "GET",
-            "URI": "/eventposturl.set.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
-            {
-                "Name": "url",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The URL to receive event notifications"
+              "ParameterName": "user",
+              "Description": "The customer for which to retrieve bounces.",
+              "Required": "Y",
+              "Type": "string"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "task",
+              "Description": "Must be set to get.",
+              "Required": "Y",
+              "Default": "get",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to bounces.",
+              "Required": "Y",
+              "Default": "bounces",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "date",
+              "Description": "If set to 1, bounce timestamps will be returned in the format YYYY-MM-DD HH:MM:SS.",
+              "Required": "N",
+              "Default": "0",
+              "Type": "bit"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         },
         {
-            "MethodName": "Delete",
-            "Synopsis": "Removes the Event Notifications URL",
-            "HTTPMethod": "GET",
-            "URI": "/eventposturl.delete.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Remove Bounces",
+          "Synopsis": "Since SendGrid does not re-deliver to bounced addresses, users can remove bounces from their list if redelivery to a bounced address is desired.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "user",
+              "Description": "The customer for which to remove bounces.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to delete.",
+              "Required": "Y",
+              "Default": "delete",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to bounces.",
+              "Required": "Y",
+              "Default": "bounces",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "email",
+              "Description": "The email address to remove from the bounce list.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         }
-        ]
+      ]
     },
     {
-        "name": "Filters (Apps)",
-        "methods": [
+      "name": "Invalid Emails",
+      "methods": [
         {
-            "MethodName": "Get Available Apps",
-            "Synopsis": "List all available apps",
-            "HTTPMethod": "GET",
-            "URI": "/filter.getavailable.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Retrieve Invalid Emails",
+          "Synopsis": "Retrieve a customer's list of invalid email addresses.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
-            }
-            ]
-        },
-        {
-            "MethodName": "Activate App",
-            "Synopsis": "Enables an app",
-            "HTTPMethod": "GET",
-            "URI": "/filter.activate.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
-            {
-                "Name": "name",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The name of the app to activate"
+              "ParameterName": "user",
+              "Description": "The customer for which to retrieve invalid emails.",
+              "Required": "Y",
+              "Type": "string"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
-            }
-            ]
-        },
-        {
-            "MethodName": "Deactivate App",
-            "Synopsis": "Disables an app",
-            "HTTPMethod": "GET",
-            "URI": "/filter.deactivate.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
-            {
-                "Name": "name",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The name of the app to deactivate"
+              "ParameterName": "task",
+              "Description": "Must be set to get.",
+              "Required": "Y",
+              "Default": "get",
+              "Type": "string"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "method",
+              "Description": "Must be set to invalidemails.",
+              "Required": "Y",
+              "Default": "invalidemails",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "date",
+              "Description": "If set to 1, invalid email timestamps will be returned in the format YYYY-MM-DD HH:MM:SS.",
+              "Required": "N",
+              "Default": "0",
+              "Type": "bit"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
+        },
+        {
+          "MethodName": "Remove Invalid Emails",
+          "Synopsis": "Since SendGrid does not re-deliver to invalid email addresses, users can remove them from their list if redelivery to an invalid address is desired.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "user",
+              "Description": "The customer for which to remove bounces.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to delete.",
+              "Required": "Y",
+              "Default": "delete",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to invalidemails.",
+              "Required": "Y",
+              "Default": "invalidemails",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "email",
+              "Description": "The email address to remove from the invalid email list.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
         }
-        ]
+      ]
     },
     {
-        "name": "Invalid Emails",
-        "methods": [
+      "name": "Spam Reports",
+      "methods": [
         {
-            "MethodName": "Get",
-            "Synopsis": "Retrieve a list of invalid emails with addresses and response codes, optionally with dates",
-            "HTTPMethod": "GET",
-            "URI": "/invalidemails.get.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Retrieve Spam Reports",
+          "Synopsis": "Retrieve a customer's list of spam reports.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "date",
-                "Required": "N",
-                "Default": "1",
-                "Type": "int",
-                "Description": "Retrieve timestamp of the invalid email records in YYYY-MM-DD HH:MM:SS format"
+              "ParameterName": "user",
+              "Description": "The customer for which to retrieve spam reports.",
+              "Required": "Y",
+              "Type": "string"
             },
             {
-                "Name": "days",
-                "Required": "N",
-                "Default": "",
-                "Type": "int",
-                "Description": "Number of days in the past for which to retrieve invalid emails (includes today). Must be an integer greater than 0"
+              "ParameterName": "task",
+              "Description": "Must be set to get.",
+              "Required": "Y",
+              "Default": "get",
+              "Type": "string"
             },
             {
-                "Name": "start_date",
-                "Required": "N",
-                "Default": "",
-                "Type": "int",
-                "Description": "The start date of the range for which to retrieve invalid emails. Date must be in YYYY-MM-DD format and be before the end_date parameter"
+              "ParameterName": "method",
+              "Description": "Must be set to spamreports.",
+              "Required": "Y",
+              "Default": "spamreports",
+              "Type": "string"
             },
             {
-                "Name": "end_date",
-                "Required": "N",
-                "Default": "",
-                "Type": "int",
-                "Description": "The end date of the range for which to retrieve invalid emails. Date must be in YYYY-MM-DD format and be after the start_date parameter"
+              "ParameterName": "date",
+              "Description": "If set to 1, spam report timestamps will be returned in the format YYYY-MM-DD HH:MM:SS.",
+              "Required": "N",
+              "Default": "0",
+              "Type": "bit"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         },
         {
-            "MethodName": "Delete",
-            "Synopsis": "Delete an address from the invalid email list",
-            "HTTPMethod": "GET",
-            "URI": "/invalidemails.delete.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Remove Spam Reports",
+          "Synopsis": "Since SendGrid does not re-deliver to addresses reporting spam, users can remove them from their list if redelivery is desired.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "email",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "Invalid email address to remove"
+              "ParameterName": "user",
+              "Description": "The customer for which to remove spam reports.",
+              "Required": "Y",
+              "Type": "string"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "task",
+              "Description": "Must be set to delete.",
+              "Required": "Y",
+              "Default": "delete",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to spamreports.",
+              "Required": "Y",
+              "Default": "spamreports",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "email",
+              "Description": "The email address to remove from the spam report list.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         }
-        ]
+      ]
     },
     {
-        "name": "Mail",
-        "methods": [
+      "name": "Unsubscribes",
+      "methods": [
         {
-            "MethodName": "Mail",
-            "Synopsis": "Sends a message to one recipient",
-            "HTTPMethod": "GET",
-            "URI": "/mail.send.json",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Retrieve Unsubscribes",
+          "Synopsis": "Retrieve a customer's list of spam reports.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "to",
-                "Required": "Y",
-                "Default": "",
-                "Type": "email",
-                "Description": "Valid email address of receipient"
+              "ParameterName": "user",
+              "Description": "The customer for which to retrieve unsubscribes.",
+              "Required": "Y",
+              "Type": "string"
             },
             {
-                "Name": "toname",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "Given name of the recipient"
+              "ParameterName": "task",
+              "Description": "Must be set to get.",
+              "Required": "Y",
+              "Default": "get",
+              "Type": "string"
             },
             {
-                "Name": "x-smtpapi",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "Must be valid JSON. Please review SMPT API documentation on what you can do with the JSON headers"
+              "ParameterName": "method",
+              "Description": "Must be set to unsubscribes.",
+              "Required": "Y",
+              "Default": "unsubscribes",
+              "Type": "string"
             },
             {
-                "Name": "from",
-                "Required": "Y",
-                "Default": "",
-                "Type": "email",
-                "Description": "Valid email address of sender"
+              "ParameterName": "date",
+              "Description": "If set to 1, unsubscribe timestamps will be returned in the format YYYY-MM-DD HH:MM:SS.",
+              "Required": "N",
+              "Default": "0",
+              "Type": "bit"
             },
             {
-                "Name": "fromname",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "Given name of the sender"
-            },
-            {
-                "Name": "subject",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "Subject of the email"
-            },
-            {
-                "Name": "text",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "Body of the email"
-            },
-            {
-                "Name": "html",
-                "Required": "n",
-                "Default": "",
-                "Type": "string",
-                "Description": "HTML Body of the email. At least one of the text or html parameters must be specified."
-            },
-            {
-                "Name": "bcc",
-                "Required": "n",
-                "Default": "",
-                "Type": "string",
-                "Description": "Valid email address to be BCC'd. This can also be passed in as an array of email addresses for multiple recipients"
-            },
-            {
-                "Name": "date",
-                "Required": "n",
-                "Default": "",
-                "Type": "string",
-                "Description": "Specify the date header of your email. Must be a valid RFC 2822 formatted date"
-            },
-            {
-                "Name": "headers",
-                "Required": "n",
-                "Default": "",
-                "Type": "string",
-                "Description": "A collection of key/value pairs in JSON format. Each key represents a header name and the value the header value. Ex: {“X-Accept-Language”: “en”, “X-Mailer”: “MyApp”}"
-            },
-            {
-                "Name": "files",
-                "Required": "n",
-                "Default": "",
-                "Type": "string",
-                "Description": "Add attachment. Ex: files[file1.doc]=example.doc&files[file2.pdf]=example.pdf. Must be less than 7MB. "
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
+        },
+        {
+          "MethodName": "Remove Unsubscribes",
+          "Synopsis": "Since SendGrid does not deliver to unsubscribed addresses, users can remove them from their list if redelivery is desired.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "user",
+              "Description": "The customer for which to remove unsubscribes.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to delete.",
+              "Required": "Y",
+              "Default": "delete",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to unsubscribes.",
+              "Required": "Y",
+              "Default": "unsubscribes",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "email",
+              "Description": "The email address to remove from the unsubscribe list.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Add Unsubscribe",
+          "Synopsis": "Add unsubscribe records to a user account. Email will not be sent to unsubscribed email addresses.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "user",
+              "Description": "The customer for which to add unsubscribes.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to add.",
+              "Required": "Y",
+              "Default": "add",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to unsubscribes.",
+              "Required": "Y",
+              "Default": "unsubscribes",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "email",
+              "Description": "The email address to add to the unsubscribe list.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
         }
-        ]
+      ]
     },
     {
-        "name": "Newsletter",
-        "methods": [
+      "name": "Account Limits",
+      "methods": [
         {
-            "MethodName": "Get Newsletter",
-            "Synopsis": "Get the contents of an existing newsletter",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/get.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Retrieve Limits",
+          "Synopsis": "Retrieve account limits for a specific customer. If the API call response is empty, no limits are currently applied.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "name",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The name of the newsletter to retrieve"
+              "ParameterName": "task",
+              "Description": "Must be set to retrieve.",
+              "Required": "Y",
+              "Default": "retrieve",
+              "Type": "string"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "method",
+              "Description": "Must be set to limit.",
+              "Required": "Y",
+              "Default": "limit",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer for which to retrieve limits.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         },
         {
-            "MethodName": "Add Newsletter",
-            "Synopsis": "Create a Newsletter",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/add.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Remove Limits",
+          "Synopsis": "Remove all limits for a given customer.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "identity",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The identity that will be assigned to the newsletter"
+              "ParameterName": "task",
+              "Description": "Must be set to none.",
+              "Required": "Y",
+              "Default": "none",
+              "Type": "string"
             },
             {
-                "Name": "name",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "Name of the newsletter"
+              "ParameterName": "method",
+              "Description": "Must be set to limit.",
+              "Required": "Y",
+              "Default": "limit",
+              "Type": "string"
             },
             {
-                "Name": "subject",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "Subject line for the newsletter"
+              "ParameterName": "user",
+              "Description": "The customer for which to remove limits.",
+              "Required": "Y",
+              "Type": "string"
             },
             {
-                "Name": "text",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The text body of the newsletter"
-            },
-            {
-                "Name": "html",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The HTML body of the newsletter"
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         },
         {
-            "MethodName": "Edit Newsletter",
-            "Synopsis": "Edit a Newsletter",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/edit.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Recurring Reset",
+          "Synopsis": "A recurring reset will allow you to periodically reset a customer's credits to a number you specify. This can be daily, weekly or monthly.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "parameters": [
             {
-                "Name": "identity",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The identity that will be assigned to the newsletter"
+              "ParameterName": "task",
+              "Description": "Must be set to recurring.",
+              "Required": "Y",
+              "Default": "recurring",
+              "Type": "string"
             },
             {
-                "Name": "name",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "Current name of the newsletter"
+              "ParameterName": "method",
+              "Description": "Must be set to limit.",
+              "Required": "Y",
+              "Default": "limit",
+              "Type": "string"
             },
             {
-                "Name": "newname",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "New name of the newsletter"
+              "ParameterName": "user",
+              "Description": "The customer for which to apply a recurring reset.",
+              "Required": "Y",
+              "Type": "string"
             },
             {
-                "Name": "subject",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "Subject line for the newsletter"
+              "ParameterName": "credits",
+              "Description": "The number of credits that the customer will have after each recurring reset. Must be greater than 0.",
+              "Required": "Y",
+              "Type": "integer"
             },
             {
-                "Name": "text",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The text body of the newsletter"
+              "ParameterName": "period",
+              "Description": "How often the customer's credits will be reset.",
+              "Required": "N",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"daily\",\"weekly\",\"montly\"]"
             },
             {
-                "Name": "html",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The HTML body of the newsletter"
+              "ParameterName": "startdate",
+              "Description": "The start date for the recurring reset.",
+              "Required": "N",
+              "Type": "YYYY-mm-dd"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "enddate",
+              "Description": "The end date for the recurring reset.",
+              "Required": "N",
+              "Type": "YYYY-mm-dd"
+            },
+            {
+              "ParameterName": "initial_credits",
+              "Description": "The number of credits to initially grant the customer. If this is not set, the credits will be reset using the credits parameter. Must be greater than 0.",
+              "Required": "N",
+              "Type": "integer"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         },
         {
-            "MethodName": "List Newsletters",
-            "Synopsis": "Retrieve a list of all newsletters",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/list.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Set Credits",
+          "Synopsis": "Set a customer's credits to the specified amount.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "name",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "Optional newsletter name to search for"
+              "ParameterName": "task",
+              "Description": "Must be set to total.",
+              "Required": "Y",
+              "Default": "total",
+              "Type": "string"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "method",
+              "Description": "Must be set to limit.",
+              "Required": "Y",
+              "Default": "limit",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer for which to set the number of credits.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "credits",
+              "Description": "The number of credits to set for the customer. Must be greater than 0.",
+              "Required": "Y",
+              "Type": "integer"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         },
         {
-            "MethodName": "Delete Newsletter",
-            "Synopsis": "Delete a newsletters",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/delete.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Increment Credits",
+          "Synopsis": "Increment a customer's credits by a specified amount.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "name",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The newsletter to be removed"
+              "ParameterName": "task",
+              "Description": "Must be set to increment.",
+              "Required": "Y",
+              "Default": "increment",
+              "Type": "string"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "method",
+              "Description": "Must be set to limit.",
+              "Required": "N",
+              "Default": "limit",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer for which to increment credits.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "credits",
+              "Description": "The number of credits to add to the customer's credit total. Must be greater than 0.",
+              "Required": "Y",
+              "Type": "integer"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         },
         {
-            "MethodName": "Get Lists",
-            "Synopsis": "Retrieve all recipients lists or check if a particular list exists",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/lists/get.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Decrement Credits",
+          "Synopsis": "Decrement a customer's credits by a specified amount.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "list",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "Optional list to retrieve. If not specified, all lists will be returned."
+              "ParameterName": "task",
+              "Description": "Must be set to decrement.",
+              "Required": "Y",
+              "Default": "decrement",
+              "Type": "string"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "method",
+              "Description": "Must be set to limit.",
+              "Required": "N",
+              "Default": "limit",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer for which to decrement credits.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "credits",
+              "Description": "The number of credits to subtract from the customer's credit total. Must be greater than 0.",
+              "Required": "Y",
+              "Type": "integer"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
-        },
-        {
-            "MethodName": "Add List",
-            "Synopsis": "Create a Recipient List",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/lists/add.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
-            {
-                "Name": "list",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The name of the list to create"
-            },
-            {
-                "Name": "name",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "Specify the column name for the 'name' associated with email addresses"
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
-            }
-            ]
-        },
-        {
-            "MethodName": "Edit List",
-            "Synopsis": "Rename a List",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/lists/edit.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
-            {
-                "Name": "list",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "Current name of the list to rename"
-            },
-            {
-                "Name": "newlist",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The new name for the list"
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
-            }
-            ]
-        },
-        {
-            "MethodName": "Delete List",
-            "Synopsis": "Delete a list",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/lists/delete.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
-            {
-                "Name": "list",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The name of the list to remove."
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
-            }
-            ]
-        },
-        {
-            "MethodName": "Get List Emails",
-            "Synopsis": "Retrieve the email addresses and associated fields for a particular list",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/lists/email/get.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
-            {
-                "Name": "list",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The list to retrieve"
-            },
-            {
-                "Name": "email",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "Optional email address or list of addresses to search for"
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
-            }
-            ]
-        },
-        {
-            "MethodName": "Add List Emails",
-            "Synopsis": "Add one or more emails to a list",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/lists/email/add.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
-            {
-                "Name": "list",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The list to which email addresses will be added"
-            },
-            {
-                "Name": "data",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "Valid JSON string describing the entries. Limited to 1000 entries per request. {\"email\":\"address@domain.com\",\"name\":\"contactName\"}"
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
-            }
-            ]
-        },
-        {
-            "MethodName": "Delete List Emails",
-            "Synopsis": "Remove one or more emails from a list",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/lists/email/delete.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
-            {
-                "Name": "list",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The name of the list from which emails will be removed"
-            },
-            {
-                "Name": "email",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The email addresses or addresses to be removed"
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
-            }
-            ]
-        },
-        {
-            "MethodName": "Get Identity",
-            "Synopsis": "Retrieve a particular identity",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/identity/get.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
-            {
-                "Name": "identity",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The identity to retrieve"
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
-            }
-            ]
-        },
-        {
-            "MethodName": "Add Identity",
-            "Synopsis": "Create a new Identity",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/identity/add.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
-            {
-                "Name": "identity",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The title of the identity"
-            },
-            {
-                "Name": "name",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The address name to be used for this identity"
-            },
-            {
-                "Name": "email",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The email address for this identity"
-            },
-            {
-                "Name": "address",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The street address for this identity"
-            },
-            {
-                "Name": "city",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The city for this identity"
-            },
-            {
-                "Name": "state",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The state for this identity"
-            },
-            {
-                "Name": "zip",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The postal code for this identity"
-            },
-            {
-                "Name": "country",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The country for this identity"
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
-            }
-            ]
-        },
-        {
-            "MethodName": "Edit Identity",
-            "Synopsis": "Edit an Identity",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/identity/edit.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
-            {
-                "Name": "identity",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The title of the identity you wish to edit"
-            },
-            {
-                "Name": "newidentity",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "The new title for the identity you are editing"
-            },
-            {
-                "Name": "name",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "The address name to be used for this identity"
-            },
-            {
-                "Name": "email",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "The email address for this identity"
-            },
-            {
-                "Name": "address",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "The street address for this identity"
-            },
-            {
-                "Name": "city",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "The city for this identity"
-            },
-            {
-                "Name": "state",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "The state for this identity"
-            },
-            {
-                "Name": "zip",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "The postal code for this identity"
-            },
-            {
-                "Name": "country",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "The country for this identity"
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
-            }
-            ]
-        },
-        {
-            "MethodName": "List Identities",
-            "Synopsis": "Retrieve a list of all identities or check if an identity exists",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/identity/list.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
-            {
-                "Name": "identity",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "Optional identity to search for"
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
-            }
-            ]
-        },
-        {
-            "MethodName": "Delete Identity",
-            "Synopsis": "Delete an identity",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/identity/delete.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
-            {
-                "Name": "identity",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The identity to be removed"
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
-            }
-            ]
-        },
-        {
-            "MethodName": "Get Lists Assigned to Newsletter",
-            "Synopsis": "Retrieve the lists assigned to a particular newsletter",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/recipients/get.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
-            {
-                "Name": "name",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The newsletter for which to retrieve lists"
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
-            }
-            ]
-        },
-        {
-            "MethodName": "Assign Lists to Newsletter",
-            "Synopsis": "Add one or more emails to a list",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/recipients/add.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
-            {
-                "Name": "name",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The newsletter to which list will be added"
-            },
-            {
-                "Name": "list",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The name of the list to add to the newsletter"
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
-            }
-            ]
-        },
-        {
-            "MethodName": "Remove Assigned Lists from Newsletter",
-            "Synopsis": "Remove one or more emails from a list",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/recipients/delete.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
-            {
-                "Name": "name",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The newsletter to which list will be added"
-            },
-            {
-                "Name": "list",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The name of the list to add to the newsletter"
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
-            }
-            ]
-        },
-        {
-            "MethodName": "Get Newsletter Schedule",
-            "Synopsis": "Retrieve the scheduled delivery time for a particular newsletter",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/schedule/get.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
-            {
-                "Name": "name",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The newsletter for which to retrieve the schedule"
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
-            }
-            ]
-        },
-        {
-            "MethodName": "Add Newsletter Schedule",
-            "Synopsis": "Schedule a delivery time for an existing newsletter",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/schedule/add.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
-            {
-                "Name": "name",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The newsletter to schedule"
-            },
-            {
-                "Name": "at",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "Date/Time to deliver the newsletter. Must be provided in ISO 8601 format (YYYY-MM-DD HH:MM:SS +-HH:MM)"
-            },
-            {
-                "Name": "after",
-                "Required": "N",
-                "Default": "",
-                "Type": "int",
-                "Description": "Number of minutes in the future to schedule delivery, e.g. a value of 30 will schedule delivery 30 minutes after the request is received"
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
-            }
-            ]
-        },
-        {
-            "MethodName": "Delete Newsletter Schedule",
-            "Synopsis": "Cancel a schedule send for a newsletter",
-            "HTTPMethod": "GET",
-            "URI": "/newsletter/schedule/delete.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
-            {
-                "Name": "name",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "The newsletter to unschedule"
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
-            }
-            ]
+          ]
         }
-        ]
+      ]
     },
     {
-        "name": "Parse",
-        "methods": [
+      "name": "Monitor Email Content",
+      "methods": [
         {
-            "MethodName": "Get Current Settings",
-            "Synopsis": "Retrieve the settings already configured for parsing incoming email",
-            "HTTPMethod": "GET",
-            "URI": "/parse.get.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Create Monitor",
+          "Synopsis": "Create a monitor record that allows you to inspect a sample of a customer's content.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "task",
+              "Description": "Must be set to create.",
+              "Required": "Y",
+              "Default": "create",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to monitor.",
+              "Required": "Y",
+              "Default": "monitor",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "name",
+              "Description": "The name by which to identify the monitor record. Must be unique and fewer than 255 characters.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "email",
+              "Description": "The email address where sampled content will be sent. Must be in email format.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "frequency",
+              "Description": "How often sampled emails will be sent. Must be greater than 0.",
+              "Required": "Y",
+              "Type": "integer"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         },
         {
-            "MethodName": "Set New Entry",
-            "Synopsis": "Specify the hostname and url for parsing incoming emails",
-            "HTTPMethod": "GET",
-            "URI": "/parse.set.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Edit Monitor",
+          "Synopsis": "Make modifications to an existing monitor record.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "hostname",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "Hostname"
+              "ParameterName": "task",
+              "Description": "Must be set to edit.",
+              "Required": "Y",
+              "Default": "edit",
+              "Type": "string"
             },
             {
-                "Name": "url",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "URL that parsed emails will be POSTed to"
+              "ParameterName": "method",
+              "Description": "Must be set to monitor.",
+              "Required": "Y",
+              "Default": "monitor",
+              "Type": "string"
             },
             {
-                "Name": "spam_check",
-                "Required": "Y",
-                "Default": "0",
-                "Type": "int",
-                "Description": "Check incoming messages for spam"
+              "ParameterName": "name",
+              "Description": "The name of the monitor record to edit.",
+              "Required": "Y",
+              "Type": "string"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "new_name",
+              "Description": "The new name for the monitor. New name must be unique and can’t be more than 255 characters.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "new_email",
+              "Description": "The new email address where sampled content will be sent. Must be in email format.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "new_frequency",
+              "Description": "How often sampled emails will be sent. Must be greater than 0.",
+              "Required": "N",
+              "Type": "integer"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         },
         {
-            "MethodName": "Delete Entry",
-            "Synopsis": "Delete the existing settings for parsing incoming emails",
-            "HTTPMethod": "GET",
-            "URI": "/parse.delete.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Delete Monitor",
+          "Synopsis": "Remove a monitor from SendGrid’s system. Make sure no users are currently using the monitor record or removal will fail.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "hostname",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "Hostname"
+              "ParameterName": "task",
+              "Description": "Must be set to delete.",
+              "Required": "Y",
+              "Default": "delete",
+              "Type": "string"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "method",
+              "Description": "Must be set to monitor.",
+              "Required": "Y",
+              "Default": "monitor",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "name",
+              "Description": "The name of the monitor record to delete.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
+        },
+        {
+          "MethodName": "List All Monitors",
+          "Synopsis": "List all existing monitor records.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to list.",
+              "Required": "Y",
+              "Default": "list",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to monitor.",
+              "Required": "Y",
+              "Default": "monitor",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Assign Customer to Monitor",
+          "Synopsis": "Add a customer to a monitor record so their content will be sampled.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to append.",
+              "Required": "Y",
+              "Default": "append",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to monitor.",
+              "Required": "Y",
+              "Default": "monitor",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer to add to the monitor.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "name",
+              "Description": "The name of the monitor record to which the customer will be assigned.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Detach Customer from Monitor",
+          "Synopsis": "Remove the association between a monitor record and a customer.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to detach.",
+              "Required": "Y",
+              "Default": "detach",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to monitor.",
+              "Required": "Y",
+              "Default": "monitor",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer from which to remove the monitor.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
         }
-        ]
+      ]
     },
     {
-        "name": "Profile",
-        "methods": [
+      "name": "IP Management",
+      "methods": [
         {
-            "MethodName": "Get",
-            "Synopsis": "Retrieve user profile information",
-            "HTTPMethod": "GET",
-            "URI": "/profile.get.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "List IPs",
+          "Synopsis": "View all IPs for your account.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.ip.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "task",
+              "Description": "Must be set to all.",
+              "Required": "Y",
+              "Default": "all",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "ip",
+              "Description": "A complete or partial IP address by which to filter your results.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "system",
+              "Description": "Include IPs assigned by SendGrid. If present, must be set to true.",
+              "Required": "N",
+              "Type": "true"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         },
         {
-            "MethodName": "Update",
-            "Synopsis": "Update user profile information",
-            "HTTPMethod": "GET",
-            "URI": "/profile.set.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "List Free IPs",
+          "Synopsis": "View all free IPs under your account. A free IP is any IP that is not in use by a customer and is not linked to an IP grouping.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.ip.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "first_name",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "First name"
+              "ParameterName": "task",
+              "Description": "Must be set to free.",
+              "Required": "Y",
+              "Default": "free",
+              "Type": "string"
             },
             {
-                "Name": "last_name",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "Last name"
+              "ParameterName": "ip",
+              "Description": "A complete or partial IP address by which to filter your results.",
+              "Required": "N",
+              "Type": "string"
             },
             {
-                "Name": "address",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "Company address"
-            },
-            {
-                "Name": "city",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "City where company is located"
-            },
-            {
-                "Name": "state",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "State where company is located"
-            },
-            {
-                "Name": "country",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "Country where company is located"
-            },
-            {
-                "Name": "zip",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "Postal code where your company is located"
-            },
-            {
-                "Name": "phone",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "Valid company phone number"
-            },
-            {
-                "Name": "website",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "Company website"
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         },
         {
-            "MethodName": "Reset Password",
-            "Synopsis": "Reset password",
-            "HTTPMethod": "GET",
-            "URI": "/password.set.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "List Taken IPs",
+          "Synopsis": "List all taken IPs under your account. A Taken IP is any IP that is in use by a customer or is linked to an IP grouping.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.ip:.format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "password",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "New password, at least 6 characters"
+              "ParameterName": "task",
+              "Description": "Must be set to taken.",
+              "Required": "Y",
+              "Default": "taken",
+              "Type": "string"
             },
             {
-                "Name": "confirm_password",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "Password confirmation. Must match new password"
+              "ParameterName": "ip",
+              "Description": "A complete or partial IP address by which to filter your results.",
+              "Required": "N",
+              "Type": "string"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         },
         {
-            "MethodName": "Update Username",
-            "Synopsis": "Updates username for SMTP server and the website. Changes take effect immediately",
-            "HTTPMethod": "GET",
-            "URI": "/profile.setUsername.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "List Available IPs",
+          "Synopsis": "List all available IPs under your account. An Available IP is any IP that is currently free, is assigned to an inactive user, or is not linked to an IP grouping.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.ip.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "username",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "New username. Must not exceed 100 characters"
+              "ParameterName": "task",
+              "Description": "Must be set to available.",
+              "Required": "Y",
+              "Default": "available",
+              "Type": "string"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "ip",
+              "Description": "A complete or partial IP address by which to filter your results.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         },
         {
-            "MethodName": "Update Email Address",
-            "Synopsis": "Updates contact email. Sends an email to confirm the new address.",
-            "HTTPMethod": "GET",
-            "URI": "/profile.setEmail.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "IP Usage",
+          "Synopsis": "A list of customers using your IPs.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.ip.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "email",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "New email. Must be in email format and no more than 100 characters"
+              "ParameterName": "task",
+              "Description": "Must be set to usage.",
+              "Required": "Y",
+              "Default": "usage",
+              "Type": "string"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "ip",
+              "Description": "A complete or partial IP address by which to filter your results.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "A complete or partial username by which to filter your results.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "group",
+              "Description": "A complete or partial IP group name by which to filter your results.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "system",
+              "Description": "Include IPs assigned by SendGrid. If present, must be set to true.",
+              "Required": "N",
+              "Type": "true"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         }
-        ]
+      ]
     },
     {
-        "name": "Spam Reports",
-        "methods": [
+      "name": "Whitelabel",
+      "methods": [
         {
-            "MethodName": "Get",
-            "Synopsis": "Retrieve a list of spam reports with addresses and response codes, optionally with dates",
-            "HTTPMethod": "GET",
-            "URI": "/spamreports.get.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "List",
+          "Synopsis": "List all whitelabeled domains.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "date",
-                "Required": "N",
-                "Default": "1",
-                "Type": "int",
-                "Description": "Retrieve timestamp of the spam report records in YYYY-MM-DD HH:MM:SS format"
+              "ParameterName": "task",
+              "Description": "Must be set to list.",
+              "Required": "Y",
+              "Default": "list",
+              "Type": "string"
             },
             {
-                "Name": "days",
-                "Required": "N",
-                "Default": "",
-                "Type": "int",
-                "Description": "Number of days in the past for which to retrieve spam reports (includes today). Must be an integer greater than 0"
+              "ParameterName": "method",
+              "Description": "Must be set to whitelabel.",
+              "Required": "Y",
+              "Default": "whitelabel",
+              "Type": "string"
             },
             {
-                "Name": "start_date",
-                "Required": "N",
-                "Default": "",
-                "Type": "int",
-                "Description": "The start date of the range for which to retrieve spam reports. Date must be in YYYY-MM-DD format and be before the end_date parameter"
-            },
-            {
-                "Name": "end_date",
-                "Required": "N",
-                "Default": "",
-                "Type": "int",
-                "Description": "The end date of the range for which to retrieve spam reports. Date must be in YYYY-MM-DD format and be after the start_date parameter"
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         },
         {
-            "MethodName": "Delete",
-            "Synopsis": "Delete an address from the Spam Reports list",
-            "HTTPMethod": "GET",
-            "URI": "/spamreports.delete.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Append",
+          "Synopsis": "Assign a whitelabel record to a customer.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "parameters": [
             {
-                "Name": "email",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "Email block address to remove"
+              "ParameterName": "task",
+              "Description": "Must be set to append.",
+              "Required": "Y",
+              "Default": "append",
+              "Type": "string"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "method",
+              "Description": "Must be set to whitelabel.",
+              "Required": "Y",
+              "Default": "whitelabel",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer that will be assigned a whitelabel record.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "mail_domain",
+              "Description": "The mail domain of the whitelabel record to which the customer be will assigned.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         }
-        ]
+      ]
     },
     {
-        "name": "Statistics",
-        "methods": [
+      "name": "Remote Login",
+      "methods": [
         {
-            "MethodName": "Get",
-            "Synopsis": "Retrieve a list of statistics",
-            "HTTPMethod": "GET",
-            "URI": "/stats.get.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Get URL",
+          "Synopsis": "Returns a unique URL that you can use to automatically login your customer.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "days",
-                "Required": "N",
-                "Default": "",
-                "Type": "int",
-                "Description": "Number of days in the past for which to retrieve statistics (Includes today). Must be an integer greater than 0"
+              "ParameterName": "method",
+              "Description": "Must be set to geturl.",
+              "Required": "Y",
+              "Default": "geturl",
+              "Type": "string"
             },
             {
-                "Name": "start_date",
-                "Required": "N",
-                "Default": "",
-                "Type": "int",
-                "Description": "The start date of the range for which to retrieve statistics. Date must be in YYYY-MM-DD format and be before the end_date parameter"
+              "ParameterName": "password",
+              "Description": "The customer's password. Will authenticate immediately if provided.",
+              "Required": "N",
+              "Type": "string"
             },
             {
-                "Name": "end_date",
-                "Required": "N",
-                "Default": "",
-                "Type": "int",
-                "Description": "The end date of the range for which to retrieve statistics. Date must be in YYYY-MM-DD format and be after the start_date parameter"
+              "ParameterName": "user",
+              "Description": "The customer that will be logging in.",
+              "Required": "Y",
+              "Type": "string"
             },
             {
-                "Name": "aggregate",
-                "Required": "N",
-                "Default": "",
-                "Type": "int",
-                "Description": "Set to 1 to retrieve all-time totals including all subusers"
-            },
-            {
-                "Name": "category",
-                "Required": "N",
-                "Default": "",
-                "Type": "string",
-                "Description": "The category or categories for which to retrieve stats. Multiple categories can be passed as follows: category[]=categoryA&category[]=categoryB."
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
-        },
-        {
-            "MethodName": "List Categories",
-            "Synopsis": "Retrieve a list of all categories for your account",
-            "HTTPMethod": "GET",
-            "URI": "/stats.get.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
-            {
-                "Name": "list",
-                "Required": "Y",
-                "Default": "true",
-                "Type": "string",
-                "Description": "Flag indicating whether or not to retrieve category list"
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
-            }
-            ]
+          ]
         }
-        ]
+      ]
     },
     {
-        "name": "Unsubscribes",
-        "methods": [
+      "name": "Event Notification URL",
+      "methods": [
         {
-            "MethodName": "Get",
-            "Synopsis": "Retrieve a list of unsubscribes, optionally with dates",
-            "HTTPMethod": "GET",
-            "URI": "/unsubscribes.get.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Get",
+          "Synopsis": "Get the event notification URL for a given customer.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "date",
-                "Required": "N",
-                "Default": "1",
-                "Type": "int",
-                "Description": "Retrieve timestamp of the unsubscribe records in YYYY-MM-DD HH:MM:SS format"
+              "ParameterName": "task",
+              "Description": "Must be set to get.",
+              "Required": "Y",
+              "Default": "get",
+              "Type": "string"
             },
             {
-                "Name": "days",
-                "Required": "N",
-                "Default": "",
-                "Type": "int",
-                "Description": "Number of days in the past for which to retrieve unsubscribes (includes today). Must be an integer greater than 0"
+              "ParameterName": "method",
+              "Description": "Must be set to eventposturl.",
+              "Required": "Y",
+              "Default": "eventposturl",
+              "Type": "string"
             },
             {
-                "Name": "start_date",
-                "Required": "N",
-                "Default": "",
-                "Type": "int",
-                "Description": "The start date of the range for which to retrieve unsubscribes. Date must be in YYYY-MM-DD format and be before the end_date parameter"
+              "ParameterName": "user",
+              "Description": "The customer for which to retrieve the event notification URL.",
+              "Required": "Y",
+              "Type": "string"
             },
             {
-                "Name": "end_date",
-                "Required": "N",
-                "Default": "",
-                "Type": "int",
-                "Description": "The end date of the range for which to retrieve unsubscribes. Date must be in YYYY-MM-DD format and be after the start_date parameter"
-            },
-            {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         },
         {
-            "MethodName": "Delete",
-            "Synopsis": "Delete an address from the unsubscribe list",
-            "HTTPMethod": "GET",
-            "URI": "/unsubscribes.delete.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Set",
+          "Synopsis": "Set the event notification URL for a given customer.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "email",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "Email address to remove"
+              "ParameterName": "task",
+              "Description": "Must be set to set.",
+              "Required": "Y",
+              "Default": "set",
+              "Type": "string"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "method",
+              "Description": "Must be set to eventposturl.",
+              "Required": "Y",
+              "Default": "eventposturl",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer for which to set the event notification URL.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "url",
+              "Description": "The new event notification URL.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         },
         {
-            "MethodName": "Add",
-            "Synopsis": "Add an address to the unsubscribe list",
-            "HTTPMethod": "GET",
-            "URI": "/unsubscribes.add.:format",
-            "RequiresOAuth": "N",
-            "parameters": [
+          "MethodName": "Delete",
+          "Synopsis": "Delete the event notification URL for a given customer.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
             {
-                "Name": "email",
-                "Required": "Y",
-                "Default": "",
-                "Type": "string",
-                "Description": "Email address to add"
+              "ParameterName": "task",
+              "Description": "Must be set to delete.",
+              "Required": "Y",
+              "Default": "delete",
+              "Type": "string"
             },
             {
-                "Name": "format",
-                "Required": "N",
-                "Default": "json",
-                "Type": "enumerated",
-                "EnumeratedList": [
-                "json",
-                "xml"
-                ],
-                "Description": "Response format"
+              "ParameterName": "method",
+              "Description": "Must be set to eventposturl.",
+              "Required": "Y",
+              "Default": "eventposturl",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer for which to delete the event notification URL.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
             }
-            ]
+          ]
         }
-        ]
+      ]
+    },
+    {
+      "name": "Authenticate Customer",
+      "methods": [
+        {
+          "MethodName": "Authenticate",
+          "Synopsis": "Authenticate a customer so that their account details can be displayed and managed independent of SendGrid.com.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to auth.",
+              "Required": "Y",
+              "Default": "auth",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer to be authenticated.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "password",
+              "Description": "The password submitted by the customer.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Parse Settings",
+      "methods": [
+        {
+          "MethodName": "Get",
+          "Synopsis": "Get parse settings for a given customer.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to get.",
+              "Required": "Y",
+              "Default": "get",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to parse.",
+              "Required": "Y",
+              "Default": "parse",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer for which to retrieve parse settings.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Create",
+          "Synopsis": "Create an additional parse settings entry for the given customer.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to set.",
+              "Required": "Y",
+              "Default": "set",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to parse.",
+              "Required": "Y",
+              "Default": "parse",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "hostname",
+              "Description": "The hostname for which to capture inbound email. Must be fewer than 255 characters.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "url",
+              "Description": "The callback URL to which parse API POSTs will be sent.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer for which to add the parse setting.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Update",
+          "Synopsis": "Update an existing parse setting entry.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to update.",
+              "Required": "Y",
+              "Default": "update",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to parse.",
+              "Required": "Y",
+              "Default": "parse",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "hostname",
+              "Description": "The hostname of the exist parse setting to be updated.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "url",
+              "Description": "The updated callback URL to which parse API POSTs will be sent.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer for which to edit the parse setting entry.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Filters / Apps",
+      "methods": [
+        {
+          "MethodName": "List",
+          "Synopsis": "List all of the available apps. Note: The name value in the result is used in all the other API calls to identify a app.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to getavailable.",
+              "Required": "Y",
+              "Default": "getavailable",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to apps.",
+              "Required": "Y",
+              "Default": "apps",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer for which available apps will be listed.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Activate",
+          "Synopsis": "Enable a specific app for a given customer.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to activate.",
+              "Required": "Y",
+              "Default": "activate",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to apps.",
+              "Required": "Y",
+              "Default": "apps",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer for which to activate the app.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "name",
+              "Description": "The name of the app to activate.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Deactivate",
+          "Synopsis": "Deactivate a specific app for a given customer.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to deactivate.",
+              "Required": "Y",
+              "Default": "deactivate",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to apps.",
+              "Required": "Y",
+              "Default": "apps",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer for which to deactivate the app.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "name",
+              "Description": "The name of the app to be deactivated.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Customize",
+          "HTTPMethod": "POST"
+        },
+        {
+          "MethodName": "Get Settings",
+          "Synopsis": "Get a customer's settings for a specific app.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.manage.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to getsettings.",
+              "Required": "Y",
+              "Default": "getsettings",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "method",
+              "Description": "Must be set to apps.",
+              "Required": "Y",
+              "Default": "apps",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer for which to retrieve app settings.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "name",
+              "Description": "The name of the app for which to retrieve settings.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Invoices",
+      "methods": [
+        {
+          "MethodName": "Get Invoice Numbers",
+          "Synopsis": "Return an array of invoice numbers.",
+          "HTTPMethod": "GET",
+          "URI": "/api/billing.list.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "start_date",
+              "Description": "The start of the date range for which to retrieve invoice numbers. Must be in YYYY-mm-dd format and be earlier than the end_date.",
+              "Required": "N",
+              "Type": "YYYY-mm-dd"
+            },
+            {
+              "ParameterName": "end_date",
+              "Description": "The end of the date range for which to retrieve invoice numbers. Must be in YYYY-mm-dd format and be later than the start date.",
+              "Required": "N",
+              "Type": "YYYY-mm-dd"
+            },
+            {
+              "ParameterName": "status",
+              "Description": "Filter by the status of the invoice.",
+              "Required": "N",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"paid\",\"unpaid\",\"refunded\",\"deferred\",\"canceled\"]"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Get Invoices",
+          "Synopsis": "Get an array of invoices.",
+          "HTTPMethod": "GET",
+          "URI": "/api/billing.get.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "start_date",
+              "Description": "The start of the date range for which to retrieve invoices. Must be in YYYY-mm-dd format and be earlier than the end date.",
+              "Required": "N",
+              "Type": "YYYY-mm-dd"
+            },
+            {
+              "ParameterName": "end_date",
+              "Description": "The end of the date range for which to retrieve invoices. Must be in YYYY-mm-dd format and be later than the start date.",
+              "Required": "N",
+              "Type": "YYYY-mm-dd"
+            },
+            {
+              "ParameterName": "status",
+              "Description": "Filter by the status of the invoice.",
+              "Required": "N",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"paid\",\"unpaid\",\"refunded\",\"deferred\",\"canceled\"]"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Reseller Billing",
+      "methods": [
+        {
+          "MethodName": "Customer Invoices and Usage",
+          "Synopsis": "Retrieve invoices and usage by invoice number.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.billing.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to usage.",
+              "Required": "Y",
+              "Default": "usage",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "number",
+              "Description": "A SendGrid invoice number.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Current Customer Usage",
+          "Synopsis": "Retrieve current usage by invoice number.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.billing.:format",
+          "RequiresOAuth": "Y",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to current.",
+              "Required": "Y",
+              "Default": "current",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "number",
+              "Description": "A SendGrid invoice number.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Account Changes",
+      "methods": [
+        {
+          "MethodName": "List Pending Changes",
+          "Synopsis": "Returns a list of all pending account changes for your customers.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.pending.:format",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to list.",
+              "Required": "Y",
+              "Default": "list",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "username",
+              "Description": "A username by which to filter results.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "type",
+              "Description": "The type of pending activity by which to filter the results.",
+              "Required": "N",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"upgrade\",\"downgrade\",\"close\"]"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Cancel Pending Change",
+          "Synopsis": "Cancel a pending account change.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.pending.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to delete.",
+              "Required": "Y",
+              "Default": "delete",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer for which to cancel the pending change.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Immediate Upgrade",
+          "Synopsis": "Immediately upgrade a customer. An invoice is generated for that user. If it’s a free user to a paid account, the full price for that upgrade will be charged. If it’s in between billing periods, a prorated discount will be applied to the invoice.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.account.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to immediate_upgrade.",
+              "Required": "Y",
+              "Default": "immediate_upgrade",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer that will be upgraded.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "package",
+              "Description": "The name of the package to which the user will be upgraded.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "ip[]",
+              "Description": "If the package you are upgrading your user to\nrequires a whitelabel and/or an unique IP, you must assign a free IP to this user.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "ip_group[]",
+              "Description": "If the package you are upgrading your user to\ndoes not require an IP or whitelabel, you must place them in an IP group.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Immediate Downgrade",
+          "Synopsis": "Immediately downgrade a customer. Once a downgrade happens, an invoice is generated for that customer. Free customers are not allowed to downgrade.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.account.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to immediate_downgrade.",
+              "Required": "Y",
+              "Default": "immediate_downgrade",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer that will be downgraded.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "package",
+              "Description": "The name of the package to which the customer will be downgraded.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "ip[]",
+              "Description": "If the package you are downgrading your customer to\nrequires a whitelabel and/or an unique IP, you may assign a free IP to this customer using your assigned IPs from SendGrid.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "ip_group[]",
+              "Description": "If the package you are downgrading your customer\nto does not require an IP or whitelabel, you may place them in an IP group.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Immediate Close",
+          "Synopsis": "Close or revert an account to a free user immediately. An invoice is generated for that user with the new package price. If no overages are incurred, a invoice with zero amount due is generated.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.account.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to immediate_close.",
+              "Required": "Y",
+              "Default": "immediate_close",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer account to be closed.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "ip_group[]",
+              "Description": "The IP group the customer will be assigned to once the account is closed.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Scheduled Upgrade",
+          "Synopsis": "Apply an upgrade at the end of the user’s billing cycle. Once an upgrade happens, an invoice is generated for that user with the new package price. Prorated charges do not apply here.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.account.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to scheduled_upgrade.",
+              "Required": "Y",
+              "Default": "scheduled_upgrade",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer that will be upgraded.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "package",
+              "Description": "The name of the package to which the user will be upgraded.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "ip[]",
+              "Description": "If the package you are upgrading your user to\nrequires a whitelabel and/or an unique IP, you must assign a free IP to this user.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "ip_group[]",
+              "Description": "If the package you are upgrading your user to\ndoes not require an IP or whitelabel, you must place them in an IP group.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Scheduled Downgrade",
+          "Synopsis": "Apply a downgrade at the end of the user’s billing cycle. Once a downgrade happens, an invoice is generated for that user with the new package price. Prorated charges do not apply here.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.account.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to scheduled_downgrade.",
+              "Required": "Y",
+              "Default": "scheduled_downgrade",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer that will be downgraded.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "package",
+              "Description": "The name of the package to which the customer will be downgraded.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "ip[]",
+              "Description": "If the package you are downgrading your customer to\nrequires a whitelabel and/or an unique IP, you may assign a free IP to this customer using your assigned IPs from SendGrid.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "ip_group[]",
+              "Description": "If the package you are downgrading your customer\nto does not require an IP or whitelabel, you may place them in an IP group.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        },
+        {
+          "MethodName": "Scheduled Close",
+          "Synopsis": "Close or revert an account to a free user at the end of the user’s billing cycle. Once a closure happens, an invoice is generated for that user with the new package price (if no overages are incurred, a invoice with zero amount due is generated.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.account.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to scheduled_close.",
+              "Required": "Y",
+              "Default": "scheduled_close",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer account to be closed.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "ip_group[]",
+              "Description": "The IP group the customer will be assigned to once the account is closed.",
+              "Required": "N",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Packages",
+      "methods": [
+        {
+          "MethodName": "List",
+          "Synopsis": "List all packages available to your account.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.package.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Account Overview",
+      "methods": [
+        {
+          "MethodName": "Get",
+          "Synopsis": "View general account information regarding a customer, including billing cycle, current billing cycle, credit usage, package, overage credits, etc.",
+          "HTTPMethod": "GET",
+          "URI": "/apiv2/reseller.account.:format",
+          "RequiresOAuth": "N",
+          "parameters": [
+            {
+              "ParameterName": "task",
+              "Description": "Must be set to overview.",
+              "Required": "Y",
+              "Default": "overview",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "user",
+              "Description": "The customer for which to retrieve account details.",
+              "Required": "Y",
+              "Type": "string"
+            },
+            {
+              "ParameterName": "format",
+              "Description": "Response format.",
+              "Required": "Y",
+              "Default": "json",
+              "Type": "enumerated",
+              "EnumeratedList": "[\"json\",\"xml\"]"
+            }
+          ]
+        }
+      ]
     }
-    ]
+  ]
 }
