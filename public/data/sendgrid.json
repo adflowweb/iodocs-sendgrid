@@ -11,132 +11,132 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "username",
+              "Name": "username",
               "Description": "The new username for the customer you are creating. No more than 64 characters.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "password",
+              "Name": "password",
               "Description": "The password for the new customer being created. Must be at least 6 characters.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "confirm_password",
+              "Name": "confirm_password",
               "Description": "Must match password and must be at least 6 characters.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "email",
+              "Name": "email",
               "Description": "Must be a valid email string. No more than 64 characters.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "first_name",
+              "Name": "first_name",
               "Description": "First name of the customer being created. No more than 50 characters.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "last_name",
+              "Name": "last_name",
               "Description": "Last name of the customer being created. No more than 50 characters.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "address",
+              "Name": "address",
               "Description": "New customer's address. No more than 100 characters.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "city",
+              "Name": "city",
               "Description": "New customer's city. No more than 100 characters.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "state",
+              "Name": "state",
               "Description": "New customer's state. No more than 100 characters.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "zip",
+              "Name": "zip",
               "Description": "New customer's postal code. This field is not\nvalidated. Please validate postal code after client input.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "country",
+              "Name": "country",
               "Description": "New customer's country. No more than 100 characters.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "phone",
+              "Name": "phone",
               "Description": "The new customer phone number. No more than 50 characters.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "website",
+              "Name": "website",
               "Description": "The new customer website. No more than 255 characters.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "company",
+              "Name": "company",
               "Description": "The new customer company name. No more than 255 characters.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "package",
+              "Name": "package",
               "Description": "The name of the service package that will be assigned to the new customer. No more than 255 characters.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "whitelabel",
+              "Name": "whitelabel",
               "Description": "The domain name that will be used for The new customer whitelabeling. No more than 255 characters.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "ip_group[]",
+              "Name": "ip_group[]",
               "Description": "Optional array of ip_group names to which the new customer will be assigned. No more than 255 characters.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "ip[]",
+              "Name": "ip[]",
               "Description": "Optional array of IP addresses to which the new customer will be assigned, the package allows it. No more than 255 characters. IP addresses must belong to you.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "free_user",
+              "Name": "free_user",
               "Description": "If true, the new customer will be a free customer.",
               "Required": "N",
               "Type": "boolean"
             },
             {
-              "ParameterName": "billing_date",
+              "Name": "billing_date",
               "Description": "Optionally specify the new customer’s billing date. If unspecified, the creation date will be used. Must be in YYYY-mm-dd format. This date must be within one month from the time of creation, e.g. if the customer is created on 2011-02-28, then the latest date you can use is 2011-03-28.",
               "Required": "N",
               "Type": "YYYY-mm-dd"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -148,18 +148,18 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The username of the customer you wish to delete.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -171,104 +171,104 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to get in order\nto retrieve user information",
               "Required": "Y",
               "Default": "get",
               "Type": "string"
             },
             {
-              "ParameterName": "username",
+              "Name": "username",
               "Description": "Search filter for customer username",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "email",
+              "Name": "email",
               "Description": "Search filter for customer email",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "active",
+              "Name": "active",
               "Description": "Search filter for whether or not the customer is currently active.",
               "Required": "N",
               "Type": "boolean"
             },
             {
-              "ParameterName": "first_name",
+              "Name": "first_name",
               "Description": "Search filter for customer's first name.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "last_name",
+              "Name": "last_name",
               "Description": "Search filter for customer's last name.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "address",
+              "Name": "address",
               "Description": "Search filter for customer's address.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "city",
+              "Name": "city",
               "Description": "Search filter for customer's city.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "state",
+              "Name": "state",
               "Description": "Search filter for customer's state.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "country",
+              "Name": "country",
               "Description": "Search filter for customer's country.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "zip",
+              "Name": "zip",
               "Description": "Search filter for customer's postal code.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "phone",
+              "Name": "phone",
               "Description": "Search filter for customer's phone number.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "website",
+              "Name": "website",
               "Description": "Search filter for customer's website.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "company",
+              "Name": "company",
               "Description": "Search filter for customer's company.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to profile.",
               "Required": "Y",
               "Default": "profile",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -280,24 +280,24 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The user account to enable. Must be in email format.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to enable",
               "Default": "enable",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -309,24 +309,24 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The user account to enable. Must be in email format.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to disable",
               "Default": "disable",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -338,24 +338,24 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The user account to enable. Must be in email format.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to website_enable",
               "Default": "website_enable",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -367,24 +367,24 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The user account to disable. Must be in email format.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to website_disable",
               "Default": "website_disable",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -396,90 +396,90 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to set",
               "Default": "set",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to profile",
               "Default": "profile",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The username of the customer to update.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "first_name",
+              "Name": "first_name",
               "Description": "The updated customer first name. No more than 50 characters.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "last_name",
+              "Name": "last_name",
               "Description": "The updated customer last name. No more than 50 characters.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "address",
+              "Name": "address",
               "Description": "The updated customer address. No more than 100 characters.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "city",
+              "Name": "city",
               "Description": "The updated customer city. No more than 100 characters.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "state",
+              "Name": "state",
               "Description": "The updated customer state. No more than 100 characters.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "zip",
+              "Name": "zip",
               "Description": "The updated customer postal code. This field is not\nvalidated. Please validate postal code after client input.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "country",
+              "Name": "country",
               "Description": "The updated customer country. No more than 100 characters.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "phone",
+              "Name": "phone",
               "Description": "The updated customer phone number. No more than 50 characters.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "website",
+              "Name": "website",
               "Description": "The updated customer website. No more than 255 characters.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "company",
+              "Name": "company",
               "Description": "The updated customer company name. No more than 255 characters.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -491,37 +491,37 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The username of the customer whose password you want to update.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to password",
               "Required": "Y",
               "Default": "password",
               "Type": "string"
             },
             {
-              "ParameterName": "password",
+              "Name": "password",
               "Description": "New customer password. Must be at least 6 characters.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "confirm_password",
+              "Name": "confirm_password",
               "Description": "Must match password parameter and be at least 6 characters.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -533,37 +533,37 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to setUsername.",
               "Default": "setUsername",
               "Type": "string"
             },
             {
-              "ParameterName": "name",
+              "Name": "name",
               "Description": "The username of the account for which to update the username.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "username",
+              "Name": "username",
               "Description": "The new username. Must be in email format, not more than 100 characters, cannot be already taken and cannot contain SendGrid.com in the domain name.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to profile.",
               "Required": "Y",
               "Default": "profile",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -575,38 +575,38 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to setEmail.",
               "Required": "Y",
               "Default": "setEmail",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The username of the account for which to update the email address.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "username",
+              "Name": "username",
               "Description": "The new username. Must be in email format, not more than 100 characters, cannot be already taken and cannot contain SendGrid.com in the domain name.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to email.",
               "Required": "Y",
               "Default": "email",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         }
@@ -623,43 +623,43 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to retrieve statistics.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to stats.",
               "Required": "Y",
               "Default": "stats",
               "Type": "string"
             },
             {
-              "ParameterName": "days",
+              "Name": "days",
               "Description": "Number of days in the past for which to retrieve statistics (includes today).",
               "Required": "Y",
               "Type": "integer"
             },
             {
-              "ParameterName": "start_date",
+              "Name": "start_date",
               "Description": "The start of the date range for which to retrieve statistics. Date must be in YYYY-mm-dd format and be earlier than the end_date parameter",
               "Required": "N",
               "Type": "YYYY-mm-dd"
             },
             {
-              "ParameterName": "end_date",
+              "Name": "end_date",
               "Description": "The end of the date range for which to retrieve statistics. Date must be in YYYY-mm-dd format and be later than the start_date parameter",
               "Required": "Y",
               "Type": "YYYY-mm-dd"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -671,32 +671,32 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to retrieve statistics.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to stats.",
               "Required": "Y",
               "Default": "stats",
               "Type": "string"
             },
             {
-              "ParameterName": "aggregate",
+              "Name": "aggregate",
               "Description": "Must be set to 1 to retrieve aggregate statistics.",
               "Required": "Y",
               "Default": "1",
               "Type": "bit"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -708,32 +708,32 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to retrieve statistics.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to stats.",
               "Required": "Y",
               "Default": "stats",
               "Type": "string"
             },
             {
-              "ParameterName": "list",
+              "Name": "list",
               "Description": "Must be set to true.",
               "Required": "Y",
               "Default": "true",
               "Type": "boolean"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -745,49 +745,49 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The user for which to retrieve category statistics.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to stats.",
               "Required": "Y",
               "Default": "stats",
               "Type": "string"
             },
             {
-              "ParameterName": "category",
+              "Name": "category",
               "Description": "The category for which to retrieve statistics. Can also be an array containing multiple categories.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "days",
+              "Name": "days",
               "Description": "The number of days in the past for which to retrieve category statistics, including today.",
               "Required": "N",
               "Type": "integer"
             },
             {
-              "ParameterName": "start_date",
+              "Name": "start_date",
               "Description": "The start of the date range for which to retrieve category statistics. Date must be in YYYY-mm-dd format and be earlier than the end_date parameter",
               "Required": "N",
               "Type": "YYYY-mm-dd"
             },
             {
-              "ParameterName": "end_date",
+              "Name": "end_date",
               "Description": "The end of the date range for which to retrieve category statistics. Date must be in YYYY-mm-dd format and be later than the start_date parameter.",
               "Required": "N",
               "Type": "YYYY-mm-dd"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         }
@@ -804,39 +804,39 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to retrieve bounces.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to get.",
               "Required": "Y",
               "Default": "get",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to bounces.",
               "Required": "Y",
               "Default": "bounces",
               "Type": "string"
             },
             {
-              "ParameterName": "date",
+              "Name": "date",
               "Description": "If set to 1, bounce timestamps will be returned in the format YYYY-MM-DD HH:MM:SS.",
               "Required": "N",
               "Default": "0",
               "Type": "bit"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -848,38 +848,38 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to remove bounces.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to delete.",
               "Required": "Y",
               "Default": "delete",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to bounces.",
               "Required": "Y",
               "Default": "bounces",
               "Type": "string"
             },
             {
-              "ParameterName": "email",
+              "Name": "email",
               "Description": "The email address to remove from the bounce list.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         }
@@ -896,39 +896,39 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to retrieve invalid emails.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to get.",
               "Required": "Y",
               "Default": "get",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to invalidemails.",
               "Required": "Y",
               "Default": "invalidemails",
               "Type": "string"
             },
             {
-              "ParameterName": "date",
+              "Name": "date",
               "Description": "If set to 1, invalid email timestamps will be returned in the format YYYY-MM-DD HH:MM:SS.",
               "Required": "N",
               "Default": "0",
               "Type": "bit"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -940,38 +940,38 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to remove bounces.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to delete.",
               "Required": "Y",
               "Default": "delete",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to invalidemails.",
               "Required": "Y",
               "Default": "invalidemails",
               "Type": "string"
             },
             {
-              "ParameterName": "email",
+              "Name": "email",
               "Description": "The email address to remove from the invalid email list.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         }
@@ -988,39 +988,39 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to retrieve spam reports.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to get.",
               "Required": "Y",
               "Default": "get",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to spamreports.",
               "Required": "Y",
               "Default": "spamreports",
               "Type": "string"
             },
             {
-              "ParameterName": "date",
+              "Name": "date",
               "Description": "If set to 1, spam report timestamps will be returned in the format YYYY-MM-DD HH:MM:SS.",
               "Required": "N",
               "Default": "0",
               "Type": "bit"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -1032,38 +1032,38 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to remove spam reports.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to delete.",
               "Required": "Y",
               "Default": "delete",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to spamreports.",
               "Required": "Y",
               "Default": "spamreports",
               "Type": "string"
             },
             {
-              "ParameterName": "email",
+              "Name": "email",
               "Description": "The email address to remove from the spam report list.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         }
@@ -1080,39 +1080,39 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to retrieve unsubscribes.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to get.",
               "Required": "Y",
               "Default": "get",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to unsubscribes.",
               "Required": "Y",
               "Default": "unsubscribes",
               "Type": "string"
             },
             {
-              "ParameterName": "date",
+              "Name": "date",
               "Description": "If set to 1, unsubscribe timestamps will be returned in the format YYYY-MM-DD HH:MM:SS.",
               "Required": "N",
               "Default": "0",
               "Type": "bit"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -1124,38 +1124,38 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to remove unsubscribes.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to delete.",
               "Required": "Y",
               "Default": "delete",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to unsubscribes.",
               "Required": "Y",
               "Default": "unsubscribes",
               "Type": "string"
             },
             {
-              "ParameterName": "email",
+              "Name": "email",
               "Description": "The email address to remove from the unsubscribe list.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -1167,38 +1167,38 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to add unsubscribes.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to add.",
               "Required": "Y",
               "Default": "add",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to unsubscribes.",
               "Required": "Y",
               "Default": "unsubscribes",
               "Type": "string"
             },
             {
-              "ParameterName": "email",
+              "Name": "email",
               "Description": "The email address to add to the unsubscribe list.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         }
@@ -1215,32 +1215,32 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to retrieve.",
               "Required": "Y",
               "Default": "retrieve",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to limit.",
               "Required": "Y",
               "Default": "limit",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to retrieve limits.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -1252,32 +1252,32 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to none.",
               "Required": "Y",
               "Default": "none",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to limit.",
               "Required": "Y",
               "Default": "limit",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to remove limits.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -1288,63 +1288,63 @@
           "URI": "/apiv2/reseller.manage.:format",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to recurring.",
               "Required": "Y",
               "Default": "recurring",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to limit.",
               "Required": "Y",
               "Default": "limit",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to apply a recurring reset.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "credits",
+              "Name": "credits",
               "Description": "The number of credits that the customer will have after each recurring reset. Must be greater than 0.",
               "Required": "Y",
               "Type": "integer"
             },
             {
-              "ParameterName": "period",
+              "Name": "period",
               "Description": "How often the customer's credits will be reset.",
               "Required": "N",
               "Type": "enumerated",
               "EnumeratedList": "[\"daily\",\"weekly\",\"montly\"]"
             },
             {
-              "ParameterName": "startdate",
+              "Name": "startdate",
               "Description": "The start date for the recurring reset.",
               "Required": "N",
               "Type": "YYYY-mm-dd"
             },
             {
-              "ParameterName": "enddate",
+              "Name": "enddate",
               "Description": "The end date for the recurring reset.",
               "Required": "N",
               "Type": "YYYY-mm-dd"
             },
             {
-              "ParameterName": "initial_credits",
+              "Name": "initial_credits",
               "Description": "The number of credits to initially grant the customer. If this is not set, the credits will be reset using the credits parameter. Must be greater than 0.",
               "Required": "N",
               "Type": "integer"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -1356,38 +1356,38 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to total.",
               "Required": "Y",
               "Default": "total",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to limit.",
               "Required": "Y",
               "Default": "limit",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to set the number of credits.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "credits",
+              "Name": "credits",
               "Description": "The number of credits to set for the customer. Must be greater than 0.",
               "Required": "Y",
               "Type": "integer"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -1399,38 +1399,38 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to increment.",
               "Required": "Y",
               "Default": "increment",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to limit.",
               "Required": "N",
               "Default": "limit",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to increment credits.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "credits",
+              "Name": "credits",
               "Description": "The number of credits to add to the customer's credit total. Must be greater than 0.",
               "Required": "Y",
               "Type": "integer"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -1442,38 +1442,38 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to decrement.",
               "Required": "Y",
               "Default": "decrement",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to limit.",
               "Required": "N",
               "Default": "limit",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to decrement credits.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "credits",
+              "Name": "credits",
               "Description": "The number of credits to subtract from the customer's credit total. Must be greater than 0.",
               "Required": "Y",
               "Type": "integer"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         }
@@ -1490,44 +1490,44 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to create.",
               "Required": "Y",
               "Default": "create",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to monitor.",
               "Required": "Y",
               "Default": "monitor",
               "Type": "string"
             },
             {
-              "ParameterName": "name",
+              "Name": "name",
               "Description": "The name by which to identify the monitor record. Must be unique and fewer than 255 characters.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "email",
+              "Name": "email",
               "Description": "The email address where sampled content will be sent. Must be in email format.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "frequency",
+              "Name": "frequency",
               "Description": "How often sampled emails will be sent. Must be greater than 0.",
               "Required": "Y",
               "Type": "integer"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -1539,50 +1539,50 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to edit.",
               "Required": "Y",
               "Default": "edit",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to monitor.",
               "Required": "Y",
               "Default": "monitor",
               "Type": "string"
             },
             {
-              "ParameterName": "name",
+              "Name": "name",
               "Description": "The name of the monitor record to edit.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "new_name",
+              "Name": "new_name",
               "Description": "The new name for the monitor. New name must be unique and can’t be more than 255 characters.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "new_email",
+              "Name": "new_email",
               "Description": "The new email address where sampled content will be sent. Must be in email format.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "new_frequency",
+              "Name": "new_frequency",
               "Description": "How often sampled emails will be sent. Must be greater than 0.",
               "Required": "N",
               "Type": "integer"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -1594,32 +1594,32 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to delete.",
               "Required": "Y",
               "Default": "delete",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to monitor.",
               "Required": "Y",
               "Default": "monitor",
               "Type": "string"
             },
             {
-              "ParameterName": "name",
+              "Name": "name",
               "Description": "The name of the monitor record to delete.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -1631,26 +1631,26 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to list.",
               "Required": "Y",
               "Default": "list",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to monitor.",
               "Required": "Y",
               "Default": "monitor",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -1662,38 +1662,38 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to append.",
               "Required": "Y",
               "Default": "append",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to monitor.",
               "Required": "Y",
               "Default": "monitor",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer to add to the monitor.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "name",
+              "Name": "name",
               "Description": "The name of the monitor record to which the customer will be assigned.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -1705,32 +1705,32 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to detach.",
               "Required": "Y",
               "Default": "detach",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to monitor.",
               "Required": "Y",
               "Default": "monitor",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer from which to remove the monitor.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         }
@@ -1747,31 +1747,31 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to all.",
               "Required": "Y",
               "Default": "all",
               "Type": "string"
             },
             {
-              "ParameterName": "ip",
+              "Name": "ip",
               "Description": "A complete or partial IP address by which to filter your results.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "system",
+              "Name": "system",
               "Description": "Include IPs assigned by SendGrid. If present, must be set to true.",
               "Required": "N",
               "Type": "true"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -1783,25 +1783,25 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to free.",
               "Required": "Y",
               "Default": "free",
               "Type": "string"
             },
             {
-              "ParameterName": "ip",
+              "Name": "ip",
               "Description": "A complete or partial IP address by which to filter your results.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -1813,25 +1813,25 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to taken.",
               "Required": "Y",
               "Default": "taken",
               "Type": "string"
             },
             {
-              "ParameterName": "ip",
+              "Name": "ip",
               "Description": "A complete or partial IP address by which to filter your results.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -1843,25 +1843,25 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to available.",
               "Required": "Y",
               "Default": "available",
               "Type": "string"
             },
             {
-              "ParameterName": "ip",
+              "Name": "ip",
               "Description": "A complete or partial IP address by which to filter your results.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -1873,43 +1873,43 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to usage.",
               "Required": "Y",
               "Default": "usage",
               "Type": "string"
             },
             {
-              "ParameterName": "ip",
+              "Name": "ip",
               "Description": "A complete or partial IP address by which to filter your results.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "A complete or partial username by which to filter your results.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "group",
+              "Name": "group",
               "Description": "A complete or partial IP group name by which to filter your results.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "system",
+              "Name": "system",
               "Description": "Include IPs assigned by SendGrid. If present, must be set to true.",
               "Required": "N",
               "Type": "true"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         }
@@ -1926,26 +1926,26 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to list.",
               "Required": "Y",
               "Default": "list",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to whitelabel.",
               "Required": "Y",
               "Default": "whitelabel",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -1956,38 +1956,38 @@
           "URI": "/apiv2/reseller.manage.:format",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to append.",
               "Required": "Y",
               "Default": "append",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to whitelabel.",
               "Required": "Y",
               "Default": "whitelabel",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer that will be assigned a whitelabel record.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "mail_domain",
+              "Name": "mail_domain",
               "Description": "The mail domain of the whitelabel record to which the customer be will assigned.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         }
@@ -2004,31 +2004,31 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to geturl.",
               "Required": "Y",
               "Default": "geturl",
               "Type": "string"
             },
             {
-              "ParameterName": "password",
+              "Name": "password",
               "Description": "The customer's password. Will authenticate immediately if provided.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer that will be logging in.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         }
@@ -2045,32 +2045,32 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to get.",
               "Required": "Y",
               "Default": "get",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to eventposturl.",
               "Required": "Y",
               "Default": "eventposturl",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to retrieve the event notification URL.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -2082,38 +2082,38 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to set.",
               "Required": "Y",
               "Default": "set",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to eventposturl.",
               "Required": "Y",
               "Default": "eventposturl",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to set the event notification URL.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "url",
+              "Name": "url",
               "Description": "The new event notification URL.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -2125,32 +2125,32 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to delete.",
               "Required": "Y",
               "Default": "delete",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to eventposturl.",
               "Required": "Y",
               "Default": "eventposturl",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to delete the event notification URL.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         }
@@ -2167,31 +2167,31 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to auth.",
               "Required": "Y",
               "Default": "auth",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer to be authenticated.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "password",
+              "Name": "password",
               "Description": "The password submitted by the customer.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         }
@@ -2208,32 +2208,32 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to get.",
               "Required": "Y",
               "Default": "get",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to parse.",
               "Required": "Y",
               "Default": "parse",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to retrieve parse settings.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -2245,44 +2245,44 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to set.",
               "Required": "Y",
               "Default": "set",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to parse.",
               "Required": "Y",
               "Default": "parse",
               "Type": "string"
             },
             {
-              "ParameterName": "hostname",
+              "Name": "hostname",
               "Description": "The hostname for which to capture inbound email. Must be fewer than 255 characters.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "url",
+              "Name": "url",
               "Description": "The callback URL to which parse API POSTs will be sent.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to add the parse setting.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -2294,44 +2294,44 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to update.",
               "Required": "Y",
               "Default": "update",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to parse.",
               "Required": "Y",
               "Default": "parse",
               "Type": "string"
             },
             {
-              "ParameterName": "hostname",
+              "Name": "hostname",
               "Description": "The hostname of the exist parse setting to be updated.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "url",
+              "Name": "url",
               "Description": "The updated callback URL to which parse API POSTs will be sent.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to edit the parse setting entry.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         }
@@ -2348,32 +2348,32 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to getavailable.",
               "Required": "Y",
               "Default": "getavailable",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to apps.",
               "Required": "Y",
               "Default": "apps",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which available apps will be listed.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -2385,38 +2385,38 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to activate.",
               "Required": "Y",
               "Default": "activate",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to apps.",
               "Required": "Y",
               "Default": "apps",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to activate the app.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "name",
+              "Name": "name",
               "Description": "The name of the app to activate.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -2428,44 +2428,40 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to deactivate.",
               "Required": "Y",
               "Default": "deactivate",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to apps.",
               "Required": "Y",
               "Default": "apps",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to deactivate the app.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "name",
+              "Name": "name",
               "Description": "The name of the app to be deactivated.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
-        },
-        {
-          "MethodName": "Customize",
-          "HTTPMethod": "POST"
         },
         {
           "MethodName": "Get Settings",
@@ -2475,38 +2471,38 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to getsettings.",
               "Required": "Y",
               "Default": "getsettings",
               "Type": "string"
             },
             {
-              "ParameterName": "method",
+              "Name": "method",
               "Description": "Must be set to apps.",
               "Required": "Y",
               "Default": "apps",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to retrieve app settings.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "name",
+              "Name": "name",
               "Description": "The name of the app for which to retrieve settings.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         }
@@ -2523,31 +2519,31 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "start_date",
+              "Name": "start_date",
               "Description": "The start of the date range for which to retrieve invoice numbers. Must be in YYYY-mm-dd format and be earlier than the end_date.",
               "Required": "N",
               "Type": "YYYY-mm-dd"
             },
             {
-              "ParameterName": "end_date",
+              "Name": "end_date",
               "Description": "The end of the date range for which to retrieve invoice numbers. Must be in YYYY-mm-dd format and be later than the start date.",
               "Required": "N",
               "Type": "YYYY-mm-dd"
             },
             {
-              "ParameterName": "status",
+              "Name": "status",
               "Description": "Filter by the status of the invoice.",
               "Required": "N",
               "Type": "enumerated",
               "EnumeratedList": "[\"paid\",\"unpaid\",\"refunded\",\"deferred\",\"canceled\"]"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -2559,31 +2555,31 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "start_date",
+              "Name": "start_date",
               "Description": "The start of the date range for which to retrieve invoices. Must be in YYYY-mm-dd format and be earlier than the end date.",
               "Required": "N",
               "Type": "YYYY-mm-dd"
             },
             {
-              "ParameterName": "end_date",
+              "Name": "end_date",
               "Description": "The end of the date range for which to retrieve invoices. Must be in YYYY-mm-dd format and be later than the start date.",
               "Required": "N",
               "Type": "YYYY-mm-dd"
             },
             {
-              "ParameterName": "status",
+              "Name": "status",
               "Description": "Filter by the status of the invoice.",
               "Required": "N",
               "Type": "enumerated",
               "EnumeratedList": "[\"paid\",\"unpaid\",\"refunded\",\"deferred\",\"canceled\"]"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         }
@@ -2600,25 +2596,25 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to usage.",
               "Required": "Y",
               "Default": "usage",
               "Type": "string"
             },
             {
-              "ParameterName": "number",
+              "Name": "number",
               "Description": "A SendGrid invoice number.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -2630,25 +2626,25 @@
           "RequiresOAuth": "Y",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to current.",
               "Required": "Y",
               "Default": "current",
               "Type": "string"
             },
             {
-              "ParameterName": "number",
+              "Name": "number",
               "Description": "A SendGrid invoice number.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         }
@@ -2664,32 +2660,32 @@
           "URI": "/apiv2/reseller.pending.:format",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to list.",
               "Required": "Y",
               "Default": "list",
               "Type": "string"
             },
             {
-              "ParameterName": "username",
+              "Name": "username",
               "Description": "A username by which to filter results.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "type",
+              "Name": "type",
               "Description": "The type of pending activity by which to filter the results.",
               "Required": "N",
               "Type": "enumerated",
               "EnumeratedList": "[\"upgrade\",\"downgrade\",\"close\"]"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -2701,25 +2697,25 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to delete.",
               "Required": "Y",
               "Default": "delete",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to cancel the pending change.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -2731,43 +2727,43 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to immediate_upgrade.",
               "Required": "Y",
               "Default": "immediate_upgrade",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer that will be upgraded.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "package",
+              "Name": "package",
               "Description": "The name of the package to which the user will be upgraded.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "ip[]",
+              "Name": "ip[]",
               "Description": "If the package you are upgrading your user to\nrequires a whitelabel and/or an unique IP, you must assign a free IP to this user.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "ip_group[]",
+              "Name": "ip_group[]",
               "Description": "If the package you are upgrading your user to\ndoes not require an IP or whitelabel, you must place them in an IP group.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -2779,43 +2775,43 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to immediate_downgrade.",
               "Required": "Y",
               "Default": "immediate_downgrade",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer that will be downgraded.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "package",
+              "Name": "package",
               "Description": "The name of the package to which the customer will be downgraded.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "ip[]",
+              "Name": "ip[]",
               "Description": "If the package you are downgrading your customer to\nrequires a whitelabel and/or an unique IP, you may assign a free IP to this customer using your assigned IPs from SendGrid.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "ip_group[]",
+              "Name": "ip_group[]",
               "Description": "If the package you are downgrading your customer\nto does not require an IP or whitelabel, you may place them in an IP group.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -2827,31 +2823,31 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to immediate_close.",
               "Required": "Y",
               "Default": "immediate_close",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer account to be closed.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "ip_group[]",
+              "Name": "ip_group[]",
               "Description": "The IP group the customer will be assigned to once the account is closed.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -2863,43 +2859,43 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to scheduled_upgrade.",
               "Required": "Y",
               "Default": "scheduled_upgrade",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer that will be upgraded.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "package",
+              "Name": "package",
               "Description": "The name of the package to which the user will be upgraded.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "ip[]",
+              "Name": "ip[]",
               "Description": "If the package you are upgrading your user to\nrequires a whitelabel and/or an unique IP, you must assign a free IP to this user.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "ip_group[]",
+              "Name": "ip_group[]",
               "Description": "If the package you are upgrading your user to\ndoes not require an IP or whitelabel, you must place them in an IP group.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -2911,43 +2907,43 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to scheduled_downgrade.",
               "Required": "Y",
               "Default": "scheduled_downgrade",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer that will be downgraded.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "package",
+              "Name": "package",
               "Description": "The name of the package to which the customer will be downgraded.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "ip[]",
+              "Name": "ip[]",
               "Description": "If the package you are downgrading your customer to\nrequires a whitelabel and/or an unique IP, you may assign a free IP to this customer using your assigned IPs from SendGrid.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "ip_group[]",
+              "Name": "ip_group[]",
               "Description": "If the package you are downgrading your customer\nto does not require an IP or whitelabel, you may place them in an IP group.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         },
@@ -2959,31 +2955,31 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to scheduled_close.",
               "Required": "Y",
               "Default": "scheduled_close",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer account to be closed.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "ip_group[]",
+              "Name": "ip_group[]",
               "Description": "The IP group the customer will be assigned to once the account is closed.",
               "Required": "N",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         }
@@ -3000,12 +2996,12 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         }
@@ -3022,25 +3018,25 @@
           "RequiresOAuth": "N",
           "parameters": [
             {
-              "ParameterName": "task",
+              "Name": "task",
               "Description": "Must be set to overview.",
               "Required": "Y",
               "Default": "overview",
               "Type": "string"
             },
             {
-              "ParameterName": "user",
+              "Name": "user",
               "Description": "The customer for which to retrieve account details.",
               "Required": "Y",
               "Type": "string"
             },
             {
-              "ParameterName": "format",
+              "Name": "format",
               "Description": "Response format.",
               "Required": "Y",
               "Default": "json",
               "Type": "enumerated",
-              "EnumeratedList": "[\"json\",\"xml\"]"
+              "EnumeratedList": ["json", "xml"]
             }
           ]
         }
